@@ -1,26 +1,37 @@
-import React from 'react'
-import Square from './Square'
+import React from 'react';
+import Square from './Square';
 
-const Board = () => {
+const Board = ({ board, handleSquareClick}) => {
+ 
+
+  const renderSquare = position => {
+     return(
+      <Square 
+      value={board[position]} 
+      onClick ={() => handleSquareClick(position)}
+      />
+    );
+  };
+
   return (
-    <div>
-      <div>
-        <Square value={0}/>
-        <Square value={1}/>
-        <Square value={2}/>
+    <div className="board">
+      <div className="board-row">
+        { renderSquare(0) }
+        { renderSquare(1) }
+        { renderSquare(2) }
       </div>
-      <div>
-      <Square value={4}/>
-      <Square value={5}/>
-      <Square value={6}/>
+      <div className="board-row">
+      { renderSquare(3) }
+      { renderSquare(4) }
+      { renderSquare(5) }
       </div>
-      <div>
-      <Square value={7}/>
-      <Square value={8}/>
-      <Square value={9}/>
+      <div className="board-row">
+      { renderSquare(6) }
+      { renderSquare(7) }
+      { renderSquare(8) }
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Board
+export default Board;
